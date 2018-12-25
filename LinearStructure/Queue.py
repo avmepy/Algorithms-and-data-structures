@@ -7,7 +7,7 @@
 class NodeForQueue:
     """
     auxiliary class
-    implement node of queue
+    implements node of queue
     """
     def __init__(self, item=None):
         self.item = item  # load (value) element

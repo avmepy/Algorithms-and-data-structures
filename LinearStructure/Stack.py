@@ -6,36 +6,36 @@
 
 class NodeForStack:
     """
-    Вспомогательный класс
-    узел стека
+    auxiliary class
+    implements node of stack
     """
     def __init__(self, item=None):
-        self.item = item  # нагрузка (значение)
-        self.next = None  # ссылка на следующий элемент
+        self.item = item  # load (value)
+        self.next = None  # link to the next item in stack
 
 
 class Stack:
     """
-    Стек
+    class Stack
     """
     def __init__(self):
         """
-        конструктор
+        constructor
         """
-        self.top_node = None  # верхний элемент
-        self.size = 0  # кол-во элементов в стеке (размер стека)
+        self.top_node = None  # the top item
+        self.size = 0  # number of items in stack
 
     def empty(self):
         """
-        проверка на пустоту
-        :return: True - если стек пуст / False в противном случае
+        chekc for emptiness
+        :return: True - if stack is empty / False otherwise
         """
         return self.top_node is None
 
     def push(self, item):
         """
-        Добавить элемент в стек
-        :param item: элемент
+        add item to stack
+        :param item: item
         :return:
         """
         self.size += 1
@@ -45,9 +45,9 @@ class Stack:
 
     def pop(self):
         """
-        Извлечь элемент из стека
-        (забирается верхний элемент)
-        :return: искомый элемент
+        extract item from stack
+        (extracts the top item)
+        :return: the top item
         """
         assert not self.empty(), 'Stack is empty!'
         current_top = self.top_node
@@ -59,14 +59,14 @@ class Stack:
 
     def top(self):
         """
-        возвращает верхний элемент, но не извлекает его
-        :return: верхинй элемент
+        return the top item without extraction
+        :return: the top item
         """
         assert not self.empty(), 'Stack is empty!'
         return self.top_node.item
 
     def __len__(self):
         """
-        :return: длина (размер стека)
+        :return: length (size of stack)
         """
         return self.size
