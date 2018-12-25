@@ -4,22 +4,22 @@
 # Created: 12/25/18
 
 
-def BubbleSort(item, key=lambda _: _, reverse=False):
+def BubbleSort(items, key=lambda _: _, reverse=False):
     """
     bubble sorting implementation
-    :param item:  item to sort (must be iterable)
+    :param items:  item to sort (must be iterable)
     :param key: sort key (function)
     :param reverse: return reverse if True
     :return: sorted item
     """
-    n = len(item)
+    n = len(items)
     for i in range(n):
         for j in range(i, n):
-            if key(item[i]) > key(item[j]):
-                item[i], item[j] = item[j], item[i]
+            if key(items[i]) > key(items[j]):
+                items[i], items[j] = items[j], items[i]
     if reverse:
-        item = item[::-1]
-    return item
+        items = items[::-1]
+    return items
 
 
 if __name__ == '__main__':
