@@ -8,47 +8,46 @@ import random
 
 class Matrix:
     """
-    класс для матриц
+    class for matrix
     """
     def __init__(self, q=list()):
         """
-        коснтруктор
-        матрица задается списком (вектор) или списком списков (матрица)
-        :param q:
+        constructor
+        the matrix must be given by a list (vector) or a list of lists (matrix)
+        :param q: list
         """
         if not isinstance(q[0], list):
             for i in range(len(q)):
                 q[i] = [q[i]]
         self.m = q
 
-    def __getitem__(self, item):
+    def __getitem__(self, index):
         """
-        возвращает элемент по индексу
-        :param item: индекс
-        :return:
+        returns item by index
+        :param index: index
+        :return: desired item
         """
-        return self.m[item]
+        return self.m[index]
 
     def __setitem__(self, key, value):
         """
-        устанавливает элемент по индексу
-        :param key: индекс
-        :param value: новое значение
-        :return:
+        sets item by index
+        :param key: index
+        :param value: new value (new item)
         """
         self.m[key] = value
 
     def __contains__(self, item):
         """
-        переопределение метода 'in'
+        redefinition method 'in'
         :param item:
-        :return:
+        :return: True if item is in matrix / False otherwise
         """
         return item in self.m
 
     def __str__(self):
         """
-        метод ля вывода
+        for pretty print
         :return:
         """
         res = ''
@@ -59,7 +58,7 @@ class Matrix:
 
     def __repr__(self):
         """
-        метод для вывода
+        for pretty print
         :return:
         """
         res = ''
@@ -70,8 +69,8 @@ class Matrix:
 
     def shape(self):
         """
-        возвращает размер матрицы
-        :return: кортеж (n, k) матрицы nxk
+        returns the sizes of matrix
+        :return: tuple (n, k) sizes of matrix
         """
         n = len(self.m)
         k = 1
@@ -82,9 +81,9 @@ class Matrix:
     @staticmethod
     def eye(n):
         """
-        возвращает единичную матрицу nxn
-        :param n: размер матрицы
-        :return:
+        creates unit matrix nxn
+        :param n: size
+        :return: unit ,atrix
         """
         new = Matrix([[0 for _ in range(n)] for _ in range(n)])
         for i in range(n):
@@ -96,18 +95,18 @@ class Matrix:
     @staticmethod
     def zeros(n, k):
         """
-        возвращает матрицу nxk заполненную нулями
-        :param n:
-        :param k:
-        :return:
+        creates zeros matrix nxk
+        :param n: size, number of rows
+        :param k: size, number of columns
+        :return: zeros matrix
         """
         return Matrix([[0 for _ in range(k)] for _ in range(n)])
 
     def __add__(self, other):
         """
-        сложение матриц
-        :param other:
-        :return: результат матричного сложения
+        matrix addition
+        :param other: other matrix
+        :return: result of addition
         """
         n, k = self.shape()
         n2, k2 = other.shape()
@@ -120,9 +119,9 @@ class Matrix:
 
     def __sub__(self, other):
         """
-        вычитание матриц
-        :param other:
-        :return:
+        matrix subtraction
+        :param other: other matrix
+        :return: result of subtraction
         """
         n, k = self.shape()
         n2, k2 = other.shape()
@@ -135,8 +134,7 @@ class Matrix:
 
     def transpose(self):
         """
-        возвращает транспонированную матрицу
-        :return:
+        :return: transposed matrix
         """
         n, k = self.shape()
         new = Matrix.zeros(k, n)
@@ -147,9 +145,9 @@ class Matrix:
 
     def __eq__(self, other):
         """
-        переопределение метода '=='
-        :param other:
-        :return: True, если две матрицы равны (поэлементно) / False, в противном случае
+        redefinition method '=='
+        :param other: other matrix
+        :return: True if matrices are equal/ False otherwise
         """
         n, k = self.shape()
         n2, k2 = other.shape()
@@ -164,9 +162,9 @@ class Matrix:
 
     def __mul__(self, other):
         """
-        умножение матриц
-        :param other:
-        :return:
+        matrix multiplication
+        :param other: other matrix
+        :return: result of multiplication
         """
         n1, k1 = self.shape()
         k2, m2 = other.shape()
@@ -180,9 +178,9 @@ class Matrix:
 
     def __pow__(self, power):
         """
-        возведение матрицы в степень
-        :param power: степень
-        :return:
+        matrix exponentiation
+        :param power: power
+        :return: result of exponentiation
         """
         new = Matrix(self.m)
         for i in range(power-1):
@@ -190,16 +188,19 @@ class Matrix:
         return new
 
     def __hash__(self):
+        """
+        to get hash
+        :return: hash code
+        """
         return str.__hash__(str(self.m))
 
     @staticmethod
     def getRandomMatrix(n=None, m=None):
         """
-        возвращает рандомную матрицу
-        n и m размеры
-        :param n: если не задано, то случайное
-        :param m: если не задано, то случайное
-        :return:
+        create random matrix nxm
+        :param n: random if not given
+        :param m: random if not given
+        :return: random matrix
         """
         if not n or not m:
             n = random.randint(1, 30)
