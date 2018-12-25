@@ -7,18 +7,22 @@
 def InsertionSort(items, key=lambda _: _, reverse=False):
     """
     insertion sorting implementation
-    :param item:  item to sort (must be iterable)
+    :param items:  item to sort (must be iterable)
     :param key: sort key (function)
     :param reverse: return reverse if True
     :return: sorted item
     """
     n = len(items)
-    for i in range(n-1, 0, -1):
-        maxPos = 0
-        for j in range(1, i+1):
-            if key(items[maxPos]) < key(items[j]):
-                maxPos = j
-        items[i], items[maxPos] = items[maxPos], items[i]
+    for i in range(1, n):
+        curVal = items[i]
+        curPos = i
+        while curPos > 0:
+            if key(items[curPos-1]) > key(curVal):
+                items[curPos] = items[curPos-1]
+            else:
+                break
+            curPos -= 1
+        items[curPos] = curVal
     if reverse:
         items = items[::-1]
     return items
