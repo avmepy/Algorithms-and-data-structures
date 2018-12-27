@@ -24,6 +24,9 @@ class Tree:
         """
         self.root = root
 
+    def addNode(self, node: TreeNode):
+        self.nodes.append(node)
+
 
 # for test
 def createSampleTree() -> Tree:
