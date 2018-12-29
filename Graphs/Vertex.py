@@ -27,3 +27,7 @@ class Vertex:
     def __str__(self):
         """for pretty print"""
         return 'key: ' + str(self.key) + ' ' + 'data: ' + str(self.data)
+
+    def __repr__(self):
+        """for pretty print"""
+        return 'key: ' + str(self.key) + ' ' + 'data: ' + str(self.data)
