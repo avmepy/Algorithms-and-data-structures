@@ -20,7 +20,7 @@ def BFS(tree: Tree):
         current = q.pop()
         print('{} -> '.format(current), end='')  # print key
 
-        for child in current.children:  # the add children
+        for child in current.children:  # then add children
             q.push(child)
 
 
