@@ -3,6 +3,8 @@
 # Author: Valentyn Kofanov (knu)
 # Created: 12/29/18
 
+from Graphs.Vertex import Vertex
+
 
 class GraphByMatrix:
     """ graph defined by adjacency matrix """
@@ -59,8 +61,39 @@ class GraphByMatrix:
         return res
 
 
+class Graph:
+    """ graph defined by adjacency list """
+    def __init__(self, oriented=False):
+        """
+        constructor
+        :param oriented: True if the graph is oriented / False - otherwise
+        """
+        self.oriented = oriented
+        self.vertices = []
+
+    def addVertex(self, vertex: Vertex):
+        """
+        adds the vertex to the graph
+        :param vertex: vertex
+        :return: None
+        """
+        self.vertices.append(vertex)
+
+    def addEdge(self, v1: Vertex, v2: Vertex):
+        """
+        adds the edge to the graph
+        :param v1: start vertex
+        :param v2: end vertex
+        :return: None
+        """
+        v1.addNeighbor(v2)
+        if not self.oriented:
+            v2.addNeighbor(v1)
+
+
 if __name__ == '__main__':
     # for test
+    #  # 1
     G = GraphByMatrix(4)
     G.addEdge(0, 1)
     G.addEdge(1, 2)
@@ -74,3 +107,16 @@ if __name__ == '__main__':
     #  | \ |
     #  3 - 2
     print(G)
+
+    #  # 2
+    # the same graph
+    H = Graph()
+    vertices = [Vertex(i) for i in range(4)]
+    for vertex in vertices:
+        H.addVertex(vertex)
+    H.addEdge(vertices[0], vertices[1])
+    H.addEdge(vertices[1], vertices[2])
+    H.addEdge(vertices[2], vertices[3])
+    H.addEdge(vertices[0], vertices[3])
+    H.addEdge(vertices[0], vertices[2])
+    print([i for i in H.vertices])
