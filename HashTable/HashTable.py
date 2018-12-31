@@ -35,7 +35,7 @@ class HashTable:
 
     def __contains__(self, item):
         """
-        method __in__
+        method 'in'
         check
         does the element belong to the table
         :param item: item
