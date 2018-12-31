@@ -11,7 +11,7 @@ class GraphByMatrix:
     def __init__(self, n=0, m=None, oriented=False):
         """
         constructor
-        :param n: number if vertices in the graph
+        :param n: number of vertices in the graph
         :param m: adjacency matrix
         :param oriented: True if the graph is oriented / False - otherwise
         """
